@@ -1,0 +1,233 @@
+body {
+  margin-top: 2%;
+  background: linear-gradient(to right, #000000, #434343);
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+
+.search {
+  position: relative;
+  box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
+}
+
+.search input {
+  height: 60px;
+  text-indent: 25px;
+  border: 2px solid #d6d4d4;
+  border-radius: 0.25rem;
+}
+
+.search input:focus {
+  box-shadow: none;
+  border: 2px solid blue;
+}
+
+.search .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+}
+
+.search button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 50px;
+  width: 110px;
+  background: blue;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.my-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff; /* Cambia el color del título si es necesario */
+  margin-bottom: 20px;
+}
+
+.carousel {
+  margin-top: 5%;
+  border-radius: 1rem; 
+  padding: 20px; 
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+}
+
+.card-slide {
+  width: 15rem;
+  margin: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.8); 
+}
+
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  padding: 5%;
+}
+
+.card-body {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semitransparente para el cuerpo de la tarjeta */
+  color: #fff;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #fff; /* Cambia el color del texto si es necesario */
+  font-weight: 400;
+  line-height: 1.2rem;
+  text-align: center;
+}
+
+.carousel-inner {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.carousel {
+  overflow-x: hidden;
+}
+
+/* Overlay to blur the background */
+.overlay {
+  position: fixed; /* Full-screen overlay */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay with transparency */
+  backdrop-filter: blur(5px); /* Blur effect */
+  z-index: 1040; /* Ensure overlay is above other content */
+}
+
+/* Centered content container */
+.content {
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  padding: 40px; 
+  margin: 20px auto;
+  max-width: 80vw; 
+  max-height: 80vh; 
+  background-color: #f8f9fa; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  z-index: 1050; 
+  overflow: auto; 
+}
+
+/* Close button style */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .content {
+    max-width: 70vw; /* Reduce width on medium screens */
+    padding: 30px;
+  }
+
+  .search input {
+    height: 50px;
+    text-indent: 20px;
+  }
+
+  .search button {
+    height: 45px;
+    width: 100px;
+  }
+
+  .card-slide {
+    width: 12rem; /* Reduce card width on medium screens */
+    margin: 0 5px; /* Reduce margin */
+  }
+
+  .card-title {
+    font-size: 1.25rem; /* Reduce font size for smaller screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .carousel {
+    padding: 15px;
+  }
+
+  .search input {
+    height: 45px;
+    text-indent: 15px;
+  }
+
+  .search button {
+    height: 40px;
+    width: 90px;
+  }
+
+  .card-slide {
+    width: 10rem; /* Reduce card width on smaller screens */
+    margin: 0 5px; /* Reduce margin */
+  }
+
+  .card-title {
+    font-size: 1.1rem; /* Reduce font size for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search input {
+    height: 40px;
+    text-indent: 15px;
+  }
+
+  .search button {
+    height: 35px;
+    width: 80px;
+  }
+
+  .card-slide {
+    width: 100%; /* Full width on very small screens */
+    margin: 5px 0; /* Vertical margin for spacing */
+  }
+
+  .card-title {
+    font-size: 1rem; /* Further reduce font size for very small screens */
+  }
+
+  .content {
+    max-width: 90vw; /* Full width on very small screens */
+    max-height: 90vh; /* Full height on very small screens */
+    padding: 20px; /* Reduce padding */
+  }
+}

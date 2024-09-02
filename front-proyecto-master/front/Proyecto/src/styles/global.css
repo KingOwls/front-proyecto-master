@@ -1,0 +1,62 @@
+:root {
+    --blue: #05161A;
+    /* azul oscuro */
+    --greendark: #072E33;
+    /* verde oscuro */
+    --greenligth: #0C7075;
+    /* verde claro */
+    --greensea: #0F969C;
+    /* marino */
+    --violet: #6DA5C0;
+    /* violeta */
+    --pink: #926457;
+    /*rosita fucsica*/
+    --bluesea: #294D61;
+    /*azul mar*/
+    --white: white;
+}
+*{
+
+  padding: 0; /* Elimina el padding */
+  margin: 0; /* Elimina el margen */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total del contenedor */
+}
+
+
+
+.fcb {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.cp {
+    cursor: pointer;
+}
+
+.fcc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gcc {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.lb {
+    font-weight: bold;
+}
+
+.form-control, .rounded{
+    margin: 30px;
+}
+
+.btn-outline-primary {
+    margin: 20px;
+    padding: 5px;
+}
