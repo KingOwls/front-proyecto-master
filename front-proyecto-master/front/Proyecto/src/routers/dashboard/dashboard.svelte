@@ -19,10 +19,10 @@
 
   //IMPORTACION DE LOS COMPONENTES
   import Customer from "../../components/customer.svelte";
-  import Employe from "../../components/Employes.svelte";
+/*   import Employe from "../../components/Employes.svelte";
   import Office from "../../components/office.svelte";
   import Orders from "../../components/order.svelte";
-  import Pay from "../../components/pays.svelte";
+  import Pay from "../../components/pays.svelte"; */
   import Product from "../../components/products.svelte";
 
   let asf = true;
@@ -45,6 +45,7 @@
 
 
   import "./Dashboard.css";
+  import { showUser } from "../../stores/Stores";
 </script>
 
 <div>
@@ -54,6 +55,7 @@
   </div>
 
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    {#if $showUser}
     <div class="row">
       <h2 class="my-title"> Ecommerce page </h2>
     </div>
@@ -63,63 +65,23 @@
           <div class="card card-slide cp" on:click={toggProduct}>
             <img class="card-img-top" src={productLogo} alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Productos</h5>
+              <h5 class="card-title">Gestion de Encuestas</h5>
             </div>
           </div>
           <div class="card card-slide cp" on:click={toggCustomer}>
-            <img class="card-img-top" src={productLogo} alt="Card image cap" />
+            <img class="card-img-top" src={employe} alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Clientes</h5>
+              <h5 class="card-title">Resultado encuenta</h5>
             </div>
-          </div>
-          <div class="card card-slide">
-            <img
-              class="card-img-top"
-              src={productLogo}
-              alt="Card image cap"
-              on:click={toggCustomer}
-            />
-            <div class="card-body">
-              <h5 class="card-title">Pedidos</h5>
-            </div>
-          </div>
-          <div class="card card-slide">
-            <img
-              class="card-img-top"
-              src={payMethod}
-              alt="Card image cap"
-              on:click={toggProduct}
-            />
-            <div class="card-body">
-              <h5 class="card-title">Pagos</h5>
-            </div>
-          </div>
-          <div class="card card-slide">
-            <img
-              class="card-img-top"
-              src={employe}
-              alt="Card image cap"
-              on:click={toggProduct}
-            />
-            <div class="card-body">
-              <h5 class="card-title">Empleados</h5>
-            </div>
-          </div>
-          <div class="card card-slide">
-            <img
-              class="card-img-top"
-              src={office}
-              alt="Card image cap"
-              on:click={toggProduct}
-            />
-            <div class="card-body">
-              <h5 class="card-title">Oficinas</h5>
-            </div>
-          </div>
+          </div>        
+     
+
         </div>
       </div>
-    </div>
+    </div>  
+    {/if}
   </div>
+
 </div>
 <!-- 
 {#if showModal}
@@ -145,6 +107,7 @@
 
 
 {#if showModal}
+
   <!-- Overlay to blur background -->
   <div class="overlay" on:click={closeModal}></div>
 
@@ -157,10 +120,10 @@
       <Product />
     {/if}
     {#if !asf}
-      <Employe />
+<!--       <Employe />
       <Office />
       <Orders />
-      <Pay />
+      <Pay /> -->
     {/if}
   </div>
 {/if}
