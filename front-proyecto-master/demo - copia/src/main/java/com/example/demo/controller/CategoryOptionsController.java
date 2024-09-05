@@ -1,11 +1,10 @@
 package com.example.demo.controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.model.CategoryOptionsEntity;
-import com.example.demo.service.CategoryOptionsService;
+import com.example.demo.domain.service.CategoryOption.CategoryOptionsService;
+import com.example.demo.repository.entities.CategoryOptionsEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +15,7 @@ public class CategoryOptionsController {
 
     private final CategoryOptionsService categoryOptionsService;  // Corrige el tipo
 
-    @Autowired
+    
     public CategoryOptionsController(CategoryOptionsService categoryOptionsService) {
         this.categoryOptionsService = categoryOptionsService;
     }

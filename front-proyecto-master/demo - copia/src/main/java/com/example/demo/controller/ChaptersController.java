@@ -1,8 +1,9 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.model.ChaptersEntity;
-import com.example.demo.service.ChaptersService;
+import com.example.demo.domain.service.Chapters.ChaptersService;
+import com.example.demo.repository.entities.ChaptersEntity;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

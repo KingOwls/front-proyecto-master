@@ -229,11 +229,11 @@ async function save() {
   {#if !showUpdate || !isActiveCreate}
     <div class="crud">
       <section class="fcc">
-        <label for="id">ID</label>
+        <label for="id">Nombre encuenta </label>
         <input id="id" type="number" bind:value={id} placeholder="Ingrese un ID" />
       </section>
       <section class="fcc">
-        <label for="precio">Precio</label>
+        <label for="precio">Pregunta</label>
         <input
           id="precio"
           type="number"

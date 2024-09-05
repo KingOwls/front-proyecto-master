@@ -3,8 +3,9 @@ package com.example.demo.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.service.SubQuestionsService;
-import com.example.demo.model.SubQuestionsEntity;
+
+import com.example.demo.domain.service.SubQuestions.SubQuestionsService;
+import com.example.demo.repository.entities.SubQuestionsEntity;
 
 import java.util.List;
 import java.util.Optional;

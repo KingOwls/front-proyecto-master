@@ -4,8 +4,9 @@ package com.example.demo.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.model.QuestionCategoriesEntity; // Asegúrate de que este sea el nombre correcto de la entidad
-import com.example.demo.service.QuestionsCategoriesService;
+
+import com.example.demo.domain.service.QuesttionCategories.QuestionsCategoriesService;
+import com.example.demo.repository.entities.QuestionCategoriesEntity;
 
 import java.util.List;
 import java.util.Optional;

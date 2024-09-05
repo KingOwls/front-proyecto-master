@@ -9,8 +9,9 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import com.example.demo.domain.repositories.CuentaRepository;
 
-import com.example.demo.*;
+
 
 import lombok.RequiredArgsConstructor;
 

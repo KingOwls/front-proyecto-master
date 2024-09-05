@@ -3,8 +3,8 @@ package com.example.demo.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.service.SurveyCategoryService;
-import com.example.demo.model.SurveyCategoryEntity;
+import com.example.demo.domain.service.SurveyCategory.SurveyCategoryService;
+import com.example.demo.repository.entities.SurveyCategoryEntity;
 
 import java.util.List;
 import java.util.Optional;

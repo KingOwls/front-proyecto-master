@@ -1,8 +1,9 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.model.CategoryCatalogEntity;  // Asegúrate de usar la entidad correcta
-import com.example.demo.service.CategoryCatalogService;
+import com.example.demo.domain.service.CategoryCatalog.CategoryCatalogService;
+import com.example.demo.repository.entities.CategoryCatalogEntity;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
