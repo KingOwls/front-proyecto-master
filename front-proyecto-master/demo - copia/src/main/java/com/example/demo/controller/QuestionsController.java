@@ -1,44 +1,57 @@
 package com.example.demo.controller;
 
+
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.controller.*;
+
 import com.example.demo.service.QuestionsService;
 import com.example.demo.model.QuestionsEntity;
+
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/questions")
 public class QuestionsController {
-    public class Questions {
-    private final QuestionsService questionService;
 
-    public Questions(QuestionsService questionService) {
-        this.questionService = questionService;
+    private final QuestionsService questionsService;
+
+    public QuestionsController(QuestionsService questionsService) {
+        this.questionsService = questionsService;
     }
 
-    @GetMapping("/survey/{surveyId}")
-    public List<QuestionsEntity> getQuestionsBySurveyId(@PathVariable Long surveyId) {
-        return questionService.getQuestionsBySurveyId(surveyId);
+   @GetMapping
+    public List<QuestionsEntity> getAllCategoryCatalogs() {
+        return questionsService.findAll();  // Asegúrate de usar el método correcto
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<QuestQuestionsEntityion> getQuestionById(@PathVariable Long id) {
-        return questionService.getQuestionById(id)
+    public ResponseEntity<QuestionsEntity> getQuestionById(@PathVariable Long id) {
+        return questionsService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public QuestionsEntity createQuestion(@RequestBody QuestionsEntity question) {
-        return questionService.saveQuestion(question);
+    public ResponseEntity<QuestionsEntity> createQuestion(@RequestBody QuestionsEntity question) {
+        QuestionsEntity createdQuestion = questionsService.save(question);
+        return ResponseEntity.ok(createdQuestion);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteQuestion(@PathVariable Long id) {
-        questionService.deleteQuestion(id);
-        return ResponseEntity.noContent().build();
+    @PutMapping("/{id}")
+    public ResponseEntity<QuestionsEntity> updateQuestion(@PathVariable Long id, @RequestBody QuestionsEntity question) {
+        return questionsService.update(id, question)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
-}
-// Definir atributos y métodos aquí
+
+     @DeleteMapping("/{id}")
+    public ResponseEntity<QuestionsEntity> eliminar(@PathVariable Long id) {
+        Optional<QuestionsEntity> ciudadOpt = questionsService.delete(id);
+        if (ciudadOpt.isPresent()) {
+            return ResponseEntity.ok(ciudadOpt.orElseThrow());
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

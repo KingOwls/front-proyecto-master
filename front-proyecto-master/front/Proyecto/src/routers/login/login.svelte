@@ -1,13 +1,22 @@
 <script>
     import { onMount } from "svelte";
     import { navigate } from "svelte-routing";
+    import { showUser } from "../../stores/Stores";
     import "./Login.less";
     let username = "";
     let password = "";
     let token = "";
-
+   function toggShouUser(){
+    showUser.update( value => !value);
+   }
     async function login() {
         navigate("/Dashboard"); 
+        if ( username === "admin"){
+                        showUser.update( value => !value);
+                        alert("putito tu");
+                        alert(showUser);
+                    }
+        
         if (username == "") {
             alert("Ingrese un usuario ");
          
@@ -37,6 +46,8 @@
                     token = data.token;
                     localStorage.setItem("token", token); 
                     console.log("JWT Token:", token);
+
+             
                     navigate("/Dashboard"); 
                 } else {
                     console.error("Token no encontrado en la respuesta");

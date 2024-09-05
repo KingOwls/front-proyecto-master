@@ -1,42 +1,54 @@
 package com.example.demo.controller;
 
+
+import com.example.demo.model.CategoryCatalogEntity;  // Asegúrate de usar la entidad correcta
+import com.example.demo.service.CategoryCatalogService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.service.CategoriesCatalogService;
-import com.example.demo.controller.CategoryCatalogController;
-import com.example.demo.model.CategoriesCatalogEntity;
+
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/category-catalog")
 public class CategoryCatalogController {
-    private final CategoriesCatalogService categoryCatalogService;
 
-    public CategoryCatalogController(CategoriesCatalogService categoryCatalogService) {
+    private final CategoryCatalogService categoryCatalogService;
+
+    public CategoryCatalogController(CategoryCatalogService categoryCatalogService) {
         this.categoryCatalogService = categoryCatalogService;
     }
 
     @GetMapping
-    public List<CategoriesCatalogEntity> getAllCategoryCatalogs() {
-        return categoryCatalogService.getAllCategoryCatalogs();
+    public List<CategoryCatalogEntity> getAllCategoryCatalogs() {
+        return categoryCatalogService.findAll();  // Asegúrate de usar el método correcto
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CategoriesCatalogEntity> getCategoryCatalogById(@PathVariable Long id) {
-        return categoryCatalogService.getCategoryCatalogById(id)
+    public ResponseEntity<CategoryCatalogEntity> getCategoryCatalogById(@PathVariable Long id) {
+        return categoryCatalogService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public CategoriesCatalogEntity createCategoryCatalog(@RequestBody CategoriesCatalogEntity categoryCatalog) {
-        return categoryCatalogService.saveCategoryCatalog(categoryCatalog);
+    public CategoryCatalogEntity createCategoryCatalog(@RequestBody CategoryCatalogEntity categoryCatalog) {
+        return categoryCatalogService.save(categoryCatalog);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoryCatalogEntity> updateCategoryCatalog(@PathVariable Long id, @RequestBody CategoryCatalogEntity categoryCatalog) {
+        return categoryCatalogService.update(id, categoryCatalog)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCategoryCatalog(@PathVariable Long id) {
-        categoryCatalogService.deleteCategoryCatalog(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<CategoryCatalogEntity> eliminar(@PathVariable Long id) {
+        Optional<CategoryCatalogEntity> ciudadOpt = categoryCatalogService.deleteById(id);
+        if (ciudadOpt.isPresent()) {
+            return ResponseEntity.ok(ciudadOpt.orElseThrow());
+        }
+        return ResponseEntity.notFound().build();
     }
 }
-

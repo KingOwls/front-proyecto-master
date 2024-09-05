@@ -45,7 +45,6 @@ public class ChaptersImpl implements ChaptersService {
 
         if (chapterOpt.isPresent()) {
             ChaptersEntity existingChapter = chapterOpt.orElseThrow();
-            existingChapter.setSurvey(chapter.getSurvey());
             existingChapter.setChapterNumber(chapter.getChapterNumber());
             existingChapter.setChapterTitle(chapter.getChapterTitle());
             return Optional.of(repository.save(existingChapter));

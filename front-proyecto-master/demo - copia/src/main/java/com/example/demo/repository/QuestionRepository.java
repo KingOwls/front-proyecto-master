@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface QuestionRepository extends CrudRepository<QuestionsEntity, Long> {
-    List<QuestionsEntity> findBySurveyId(Long surveyId);
+    List<QuestionsEntity> findAll();
 }
 

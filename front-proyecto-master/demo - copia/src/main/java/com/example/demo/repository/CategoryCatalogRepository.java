@@ -1,8 +1,12 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.CategoryOptionsEntity;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface CategoryCatalogRepository extends CrudRepository<CategoryOptionsEntity, Long> {
+import com.example.demo.model.CategoryCatalogEntity;
+import java.util.List;
+
+
+public interface CategoryCatalogRepository extends CrudRepository<CategoryCatalogEntity, Long> {
+    List<CategoryCatalogEntity> findAll(); 
 }

@@ -55,13 +55,17 @@
   </div>
 
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    {#if $showUser}
-    <div class="row">
-      <h2 class="my-title"> Ecommerce page </h2>
+     <div class="row">  
+       {#if !$showUser}
+      <h2 class="my-title">Ecommerce  page </h2>
+      {:else if $showUser}
+      <h2 class="my-title"> cleinte page </h2>
+       {/if}
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="d-flex">
+          {#if !$showUser}
           <div class="card card-slide cp" on:click={toggProduct}>
             <img class="card-img-top" src={productLogo} alt="Card image cap" />
             <div class="card-body">
@@ -74,12 +78,19 @@
               <h5 class="card-title">Resultado encuenta</h5>
             </div>
           </div>        
-     
+          {:else if $showUser}
+          <div class="card card-slide cp" on:click={toggCustomer}>
+            <img class="card-img-top" src={employe} alt="Card image cap" />
+            <div class="card-body">
+              <h5 class="card-title">hacer encuenta</h5>
+            </div>
+          </div>    
+          {/if}
 
         </div>
       </div>
     </div>  
-    {/if}
+   
   </div>
 
 </div>

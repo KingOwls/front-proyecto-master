@@ -1,44 +1,53 @@
 package com.example.demo.controller;
 
 
-
-import com.example.demo.model.*;
-import com.example.demo.*;
+import com.example.demo.model.ChaptersEntity;
+import com.example.demo.service.ChaptersService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import  com.example.demo.service.ChaptersService;
-import com.example.demo.model.ChaptersEntity;
+
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/chapters")
 public class ChaptersController {
+
     private final ChaptersService chapterService;
 
+    // Inyección de dependencia mediante constructor
     public ChaptersController(ChaptersService chapterService) {
         this.chapterService = chapterService;
     }
 
-    @GetMapping("/survey/{surveyId}")
-    public List<ChaptersEntity> getChaptersBySurveyId(@PathVariable Long surveyId) {
-        return chapterService.getChaptersBySurveyId(surveyId);
+    @GetMapping
+    public List<ChaptersEntity> getAllCategoryCatalogs() {
+        return chapterService.findAll();  // Asegúrate de usar el método correcto
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ChaptersEntity> getChapterById(@PathVariable Long id) {
-        return chapterService.getChapterById(id)
+        return chapterService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ChaptersEntity createChapter(@RequestBody ChaptersEntity chapter) {
-        return chapterService.saveChapter(chapter);
+    public ResponseEntity<ChaptersEntity> createChapter(@RequestBody ChaptersEntity chapter) {
+        ChaptersEntity createdChapter = chapterService.save(chapter);
+        return ResponseEntity.ok(createdChapter);  // Devuelve el capítulo creado
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ChaptersEntity> updateChapter(@PathVariable Long id, @RequestBody ChaptersEntity chapter) {
+        return chapterService.update(id, chapter)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteChapter(@PathVariable Long id) {
-        chapterService.deleteChapter(id);
-        return ResponseEntity.noContent().build();
-    }// Definir atributos y métodos aquí
+        Optional<ChaptersEntity> deletedChapter = chapterService.delete(id);
+        return deletedChapter.isPresent() ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    }
 }
